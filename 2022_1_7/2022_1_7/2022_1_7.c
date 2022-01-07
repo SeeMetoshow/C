@@ -108,3 +108,113 @@
 // 从右往左 -- 造价越高 、 存取速度越快、 空间越小
 // define 和 include 不是关键字， 它们是 预处理指令.
 
+//// typedef -- 类型重定义
+//typedef unsigned int u_int;
+//int main()
+//{
+//	unsigned int num1 = 100;
+//	u_int num2 = 100;
+//	// unsigned int 和 u_int 一个意思
+//	return 0;
+//}
+
+// static -- 静态的
+// 1.static 修饰局部变量  -- 改变了局部变量的生命周期。 本质上改变了变量的存储类型,将它 从栈区改变到了静态区
+// 2.static 修饰全局变量  -- 使这个全局变量只能在自己所在源文件中使用，其它源文件不可以使用
+//   全局变量，在其他源文件内部可以使用，是因为它本身具有外部链接属性。
+//   但是被static修饰之后，就变成了内部链接属性，其他源文件不能链接到这个静态全局变量
+// 3.static 修饰 函数 -- 和static修饰全局变量类似。
+//   使得函数只能在自己所在的源文件的内部使用，不能在其他源文件内部使用
+//void test()
+//{
+//	static int a = 1;
+//	a++;
+//	printf("%d ",a);
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i < 10)
+//	{
+//		test();
+//		i++;
+//	}
+//	return 0;
+//}
+// 内存 会划分为几个区域：栈区（局部变量、函数的参数）、堆区（动态内存分配）、静态区 （全局变量和 static修饰的静态变量）
+
+// #define 定义常量和宏
+// 1.define 定义符号
+//   #define MAX 100
+// 2.define 定义宏
+//#define ADD(X,Y) (X + Y)
+//int main()
+//{
+//	printf("%d", ADD(2, 4));// 输出 6
+//	// printf("%d",4*ADD(2, 4)); 输出会是 12  -- 4*2+4
+//	printf("%d", 4 * ADD(2, 4)); // 加上括号之后 ，输出 了 24
+//	return 0;
+//}
+
+// 指针
+//int main()
+//{
+//	int a = 10;
+//	printf("%p ", &a); // %p 是专门用来打印指针的
+//	int *pa = &a; // pa 用来存放地址，在c语言中 pa叫做 指针变量
+//	// * 说明 pa 是指针变量
+//	// int 说明的是pa指向的是 int 类型的变量
+//
+//	char ch = 'w';
+//	char * pc = &ch;
+//	return 0;
+//}
+
+//通过指针找到所要操作的对象
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;
+//	*pa = 30; // * 解引用操作 *pa 通过 pa里面的地址，找到 a
+//	printf("%d", a);
+//	return 0;
+//}
+
+// 指针大小
+//int main()
+//{
+//	printf("%d\n", sizeof(char*));
+//	printf("%d\n", sizeof(int*));
+//	printf("%d\n", sizeof(short*));
+//	printf("%d\n", sizeof(long*));
+//	// 指针是用来存放地址的，指针需要多大的空间 取决于 地址的存储需要的大小
+//	// 比如 64位的电脑，64bit位的二进制序列作为地址，
+//	// 那么这个二进制序列在内存中的存储是固定的大小，都是 64/8 = 8个字节
+//	return 0;
+//}
+
+// 结构体 -- 让我们有了能力描述复杂对象
+// 现实生活中，我们常常要描述一个对象，而一个对象 往往不只具有一个属性，它常常是具有多个属性的，
+// 那么如何更好的描述它就变得尤为关键。
+//创建一个学生
+//struct Stu
+//{
+//	char name[10];
+//	int age;
+//	double score;
+//};
+//struct Book
+//{
+//	char name[10];
+//	float price;
+//	char bookId[20];
+//};
+//int main()
+//{
+//	struct Stu s = {"阿强",20,45.52};
+//	printf("%s %d %lf\n",s.name,s.age,s.score);// . 操作符
+//	struct Stu* p = &s;
+//	printf("2: %s %d %lf\n", (*p).name, (*p).age, (*p).score);
+//	printf("3: %s %d %lf", p->name, p->age, p->score);
+//	return 0;
+//}
