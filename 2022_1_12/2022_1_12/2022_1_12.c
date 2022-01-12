@@ -110,3 +110,19 @@
 //	return 0;
 //}
 
+// do while 循环
+// 代码格式:
+//do
+//循环语句;
+//while (表达式);
+//int main()
+//{
+//	int i = 1;
+//	do
+//	{
+//		printf("%d ", i);
+//		i++;
+//	} while (i <= 10);
+//
+//	return 0;
+//}
